@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skill-artifact-check"
+version = "0.1.0"
+description = "Offline payload parity checks for Agent Skill ZIPs and installed folders"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = ["agent-skills", "skills", "zip", "release", "validation"]
+classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Operating System :: OS Independent"]
+
+[project.scripts]
+skill-artifact-check = "skill_artifact_check:main"
+
+[tool.setuptools]
+py-modules = ["skill_artifact_check"]
