@@ -31,6 +31,15 @@ class ArtifactsTest(unittest.TestCase):
             warnings.simplefilter('ignore', UserWarning)
             with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED) as z:
                 for path, content in entries:
+                    if isinstance(path, str):
+                        # ZipInfo normalizes backslashes on Windows and truncates
+                        # NULs. Preserve raw fixture bytes to test the reader,
+                        # rather than accidentally testing a sanitized archive.
+                        info = zipfile.ZipInfo(path)
+                        info.filename = path
+                        info.orig_filename = path
+                        info.compress_type = zipfile.ZIP_DEFLATED
+                        path = info
                     z.writestr(path, content)
         return target
 
@@ -73,6 +82,16 @@ class ArtifactsTest(unittest.TestCase):
             with self.subTest(name=name):
                 with self.assertRaises(sac.ArtifactError):
                     sac.check(self.zip([('SKILL.md', SKILL), (name, b'x')]))
+
+    def test_unsafe_fixture_preserves_raw_names(self):
+        for name in ['a\\b', 'a\x00b']:
+            with self.subTest(name=name):
+                archive = self.zip([('SKILL.md', SKILL), (name, b'x')])
+                self.assertEqual(archive.read_bytes().count(name.encode()), 2)
+                with zipfile.ZipFile(archive) as z:
+                    self.assertEqual(z.infolist()[1].orig_filename, name)
+                with self.assertRaises(sac.ArtifactError):
+                    sac.check(archive)
 
     def test_duplicate_members(self):
         with self.assertRaises(sac.ArtifactError):

@@ -133,7 +133,7 @@ def load_zip(path):
         seen = set()
         for item in members:
             if item.orig_filename != item.filename:
-                raise ArtifactError('ZIP member name contains a NUL byte.')
+                raise ArtifactError('ZIP member name contains a NUL byte or normalized platform separator.')
             name = item.filename[:-1] if item.is_dir() else item.filename
             validate_path(name)
             if name in seen:
