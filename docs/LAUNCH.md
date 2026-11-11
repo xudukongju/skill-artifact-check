@@ -26,6 +26,8 @@ It is Python standard-library only, reads files without running them, and can fa
 
 I'd value feedback from skill authors: have you shipped a package whose contents differed from your working folder? Would a small check like this fit your release process?
 
+Disclosure to include: this project, its tests and this launch text were primarily generated with Codex.
+
 Attach the verified public repository URL only after publication. Disclose that you built it. Post once in a relevant community whose current rules allow project sharing; do not paste this into unrelated support threads.
 
 ## 中文发布文案草稿
@@ -37,6 +39,8 @@ Attach the verified public repository URL only after publication. Disclose that 
 只需要 Python，无运行时第三方依赖，不调用模型、不上传数据、不运行 Skill 脚本。支持 JSON 和 CI 退出码，也检查常见打包问题。它解决的是“内容有没有交付正确”，不是修复客户端缓存，也不是完整安全扫描器。
 
 如果你维护多文件 Skill，欢迎用不含私密信息的样例反馈：这个检查是否能融入发布流程？
+
+披露：本项目的实现、测试和这段发布文案主要由 Codex 辅助完成。
 
 发布时附已核验的仓库链接，不编造用户量、平台兼容认证或安全保证。
 
@@ -55,3 +59,7 @@ Attach the verified public repository URL only after publication. Disclose that 
 - GitHub Release: not published.
 - External posts: none.
 - Traffic/adoption: not measured.
+
+## Selected community channel
+
+[Agent Skills Show and tell](https://github.com/agentskills/agentskills/discussions/categories/show-and-tell) explicitly invites sharing creations. Its [contribution guidance](https://github.com/agentskills/agentskills/blob/main/CONTRIBUTING.md), inspected on 2026-11-11, directs open-ended feedback to Discussions and requires disclosure of AI assistance in contributions. Prefer one substantive showcase discussion after the repository and release are live. Do not submit a client ecosystem-listing PR: this tool does not discover and execute skills, so it does not meet that listing criterion.
