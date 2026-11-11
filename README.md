@@ -4,7 +4,7 @@
 
 An offline, zero-runtime-dependency CLI that compares a `.skill`/ZIP release or an installed skill folder against the source you intended to ship. It names missing, extra, and changed files without printing their contents.
 
-[中文说明](README.zh-CN.md) · [Why this exists](docs/RESEARCH.md) · [Report contract](docs/REPORT.md)
+[Downloads](https://github.com/xudukongju/skill-artifact-check/releases) · [中文说明](README.zh-CN.md) · [Why this exists](docs/RESEARCH.md) · [Report contract](docs/REPORT.md)
 
 ```text
 FAIL  skill-artifact-check
@@ -75,4 +75,4 @@ It cannot fix a client's upload/cache bug, prove that a running agent loaded the
 python3 -m unittest discover -s tests -v
 ```
 
-MIT licensed. Contributions should include a failing fixture and regression test. Use synthetic content in issues; do not attach credentials or private skill archives. Version 0.1.0 is an initial local-tested release candidate; hosted CI and publication are pending.
+MIT licensed. Contributions should include a failing fixture and regression test. Use synthetic content in issues; do not attach credentials or private skill archives. Version 0.1.0 is an initial alpha. The [CI workflow](https://github.com/xudukongju/skill-artifact-check/actions/workflows/ci.yml) tests Linux, macOS and Windows on Python 3.10 and 3.12. Implementation, tests and documentation were primarily authored with Codex.
