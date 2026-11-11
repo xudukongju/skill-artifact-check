@@ -46,7 +46,7 @@ Attach the verified public repository URL only after publication. Disclose that 
 
 ## Publication sequence and gate
 
-1. GitHub connector is authenticated as xudukongju. Repository creation and releases need the official gh CLI because these actions are not exposed by this connector. Complete its device authorization if needed; UI automation access was denied. Do not retrieve credentials through filesystem or shell workarounds.
+1. GitHub connector is authenticated as xudukongju. Repository creation and releases need the official gh CLI because these actions are not exposed by this connector. CLI installation currently fails on network downloads and UI automation access was denied. User has been asked to create the public repository with an initial README so connector-based code publication can proceed. Revisit release/discussion APIs only when a capable route is available. Do not retrieve credentials through filesystem or shell workarounds.
 2. Create the public repository under the user's confirmed personal account. If multiple organizations or accounts are available, ask which destination to use.
 3. Push the reviewed project, check the resulting remote files and Actions results, correct any platform failure, and then publish the release and attach built artifacts.
 4. Add repository description/topics. This is the first authorized discovery action.
