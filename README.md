@@ -31,8 +31,8 @@ Use a new output path if `/tmp/demo.skill` already exists. On Windows, use `py` 
 For your own skill:
 
 ```sh
-# Before upload: compare the release with the folder you actually edited.
-python3 skill_artifact_check.py ./dist/my-skill.skill --source ./my-skill
+# Before upload: compare the release with the intended, clean payload.
+python3 skill_artifact_check.py ./dist/my-skill.skill --source ./staging/my-skill
 
 # After installation: compare the installed copy with the intended source.
 python3 skill_artifact_check.py ./installed/my-skill --source ./my-skill --json
@@ -42,6 +42,10 @@ python3 skill_artifact_check.py ./downloaded.skill --source ./expected.zip
 ```
 
 Optional installation from a local checkout: `python3 -m pip install .`, then use `skill-artifact-check`. Runtime uses only the standard library; pip may fetch the setuptools build dependency. There is no published PyPI package yet.
+
+If your packager excludes development files, comparing against the raw working
+directory can flag intentional omissions. [Choose the release baseline](docs/RELEASE_BASELINE.md)
+for a runnable example and measured comparisons with direct diff and skil.
 
 ## What it checks
 

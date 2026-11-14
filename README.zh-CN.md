@@ -10,11 +10,13 @@
 
 ```sh
 python3 skill_artifact_check.py examples/demo
-python3 skill_artifact_check.py ./release.skill --source ./my-skill
+python3 skill_artifact_check.py ./release.skill --source ./staging/my-skill
 python3 skill_artifact_check.py ./installed/my-skill --source ./my-skill --json
 ```
 
 Windows 可用 `py` 替换 `python3`。不需要 API Key、模型调用或账号，也不需要安装第三方运行时包。
+
+`staging/my-skill` 应是按发布规则准备的预期交付目录，不一定是整个开发目录。打包器有意排除的缓存或评测文件，不能误判成漏打包。[实测案例与可运行示例](docs/RELEASE_BASELINE.md)也说明了普通 `diff` 已能覆盖哪些检查，无需重复引入工具。
 
 - `changed`：文件内容不同，包含换行符差异。
 - `missing`：实际包或安装目录缺少源目录中的文件。

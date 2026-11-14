@@ -1,5 +1,12 @@
 # Opportunity assessment — 2026-11-11
 
+**2026-11-14 follow-up:** [Same-input comparison and release-baseline case](RELEASE_BASELINE.md).
+Direct diff detected every synthetic payload change in the three sampled sources;
+skil's lock verification also rejected changed content in a separate control.
+The independent detection-value hypothesis is not supported by these checks.
+The remaining question is workflow convenience and actionable output, not missing
+byte-comparison technology. The historical assessment below records the original decision.
+
 ## Decision
 
 Build a small offline **Skill artifact parity checker**: compare the package or accessible installed copy against the directory the author actually edited. The initial benefit is fewer stale/wrong release artifacts and clearer evidence when reporting an update problem.
