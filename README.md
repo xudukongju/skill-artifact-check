@@ -47,6 +47,9 @@ If your packager excludes development files, comparing against the raw working
 directory can flag intentional omissions. [Choose the release baseline](docs/RELEASE_BASELINE.md)
 for a runnable example and measured comparisons with direct diff and skil.
 
+[Real packaging failure and recovery](docs/EMPTY_PACKAGE.md): run a pinned upstream
+packager on synthetic inputs and verify the actual ZIP, including its intended exclusions.
+
 ## What it checks
 
 - Exact file bytes, including binary assets and line endings: stale instructions, missing helpers, unexpected files.

@@ -21,6 +21,17 @@ jobs:
       - run: python -m pip wheel --no-deps --wheel-dir dist .
       - run: python -m pip install --no-index --find-links dist skill-artifact-check
       - run: skill-artifact-check examples/demo --source examples/demo --json
+      - run: python examples/release_baseline.py
+      - name: Fetch reviewed upstream packager at fixed revision
+        shell: python
+        run: |
+          import os, pathlib, urllib.request
+          url = 'https://raw.githubusercontent.com/anthropics/knowledge-work-plugins/e91a134584eb798bac7fb0379358006a2b63b965/data/skills/data-context-extractor/scripts/package_data_skill.py'
+          path = pathlib.Path(os.environ['RUNNER_TEMP']) / 'package_data_skill.py'
+          with urllib.request.urlopen(url, timeout=60) as response:
+              path.write_bytes(response.read())
+      - name: Check real packaging failure and recovery
+        run: python examples/reproduce_empty_package.py "${{ runner.temp }}/package_data_skill.py" --temp-root "${{ runner.temp }}"
   release:
     if: startsWith(github.ref, 'refs/tags/v') && github.event_name == 'push'
     needs: test
