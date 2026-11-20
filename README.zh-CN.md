@@ -4,7 +4,23 @@
 
 这是一个离线、零运行时依赖的 Python 命令行工具。将 `.skill` / ZIP 包或已安装目录与预期源目录逐文件比较，找出旧内容、遗漏脚本和多余文件。只输出路径与状态，不打印文件内容。
 
-## 立即使用
+## 打包显示成功，先确认交付内容
+
+[下载项目源码 ZIP](https://github.com/xudukongju/skill-artifact-check/archive/refs/heads/main.zip)，
+解压后用 Python 3.10+ 执行（Windows 可用 `py`）：
+
+```sh
+python3 examples/release_baseline.py
+```
+
+三个合成场景分别展示：把有意排除的文件错当基准、实际包与预期一致、打包后真正的脚本内容过期。
+无须安装工具，也不改已有文件。遇到空 ZIP，[先恢复打包](docs/EMPTY_PACKAGE.md)：
+列出包里的文件就能发现空包。需要对照预期发布内容、定位差异并在 CI 中失败时，再用此工具。
+
+如果你在真实发布任务中试用了，欢迎在 [GitHub Issue](https://github.com/xudukongju/skill-artifact-check/issues/new)
+说说之前怎么核对、这次改变了哪一步。只需数量或合成样本，不必上传技能包或公开私有路径。
+
+## 核对自己的发布包
 
 需要 Python 3.10+，下载项目源码并进入项目目录：
 

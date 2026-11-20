@@ -16,7 +16,27 @@ Rebuild from the intended source or inspect the installed copy. No files were mo
 
 Illustrative output; counts depend on the supplied artifact.
 
-## Try it without installing anything
+## Check why a successful build shipped the wrong files
+
+[Download the source ZIP](https://github.com/xudukongju/skill-artifact-check/archive/refs/heads/main.zip),
+unzip it, then run this from its folder with Python 3.10+ (use `py` on Windows):
+
+```sh
+python3 examples/release_baseline.py
+```
+
+Three tiny fixtures separate a wrong baseline (an intentionally excluded file),
+a matching package, and a genuinely stale helper. Nothing is installed or changed.
+If the ZIP is empty, [recover the package first](docs/EMPTY_PACKAGE.md): listing its
+entries is enough to catch that failure. Use this CLI when you need named
+differences and a nonzero exit status against your intended payload.
+
+If you try this on a package you actually ship, tell us in a
+[GitHub issue](https://github.com/xudukongju/skill-artifact-check/issues/new)
+which check you used before and what this run changed. A count and a synthetic
+example suffice; don't upload your skill or paste sensitive paths.
+
+## Compare your own package
 
 Requires Python 3.10 or newer. Download this project's source, enter its directory, then run:
 
